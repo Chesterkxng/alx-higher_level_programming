@@ -19,7 +19,7 @@ int check_cycle(listint_t *list)
 	do {
 		turtle = turtle->next;
 		if (hare && hare->next)
-			hare = fast->next->next;
+			hare = hare->next->next;
 	} while (hare != turtle && hare);
 	if (!hare)
 		return (0);
