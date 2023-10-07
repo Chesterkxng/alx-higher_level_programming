@@ -6,27 +6,23 @@
  */
 int is_palindrome(listint_t **head)
 {
-	size_t length = 0, j;
+	size_t length, j;
 	int i = 0;
 	listint_t *cursor = *head;
 	int *array;
 
 	if (*head == NULL)
 		return (1);
-	while (cursor)
-	{
-		length++;
+	for (length = 0; cursor; length++)
 		cursor = cursor->next;
-	}
 	array = malloc(sizeof(int) * length);
 	if (!array)
 		return (0);
 	cursor = *head;
-	while (cursor)
+	for (i = 0; cursor; i++)
 	{
 		array[i] = cursor->n;
 		cursor = cursor->next;
-		i++;
 	}
 	for (j = 0; j < length / 2; j++)
 	{
