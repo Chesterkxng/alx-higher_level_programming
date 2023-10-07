@@ -14,7 +14,7 @@ int is_palindrome(listint_t **head)
 
 	if (*head == NULL)
 		return (1);
-	array = malloc(sizeof(int) * length);
+	array = malloc(sizeof(int) * 1024);
 	if (!array)
 		return (0);
 	cursor = *head;
