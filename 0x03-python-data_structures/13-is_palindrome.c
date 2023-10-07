@@ -1,4 +1,9 @@
 #include "lists.h"
+/**
+ * is_palindrome - a function that check
+ * @head: listint_t
+ * Return: 0 if not 1 if
+ */
 int is_palindrome(listint_t **head)
 {
 	int length = 0, i = 0, j;
@@ -12,7 +17,7 @@ int is_palindrome(listint_t **head)
 		length++;
 		cursor = cursor->next;
 	}
-	array = (int *)malloc(sizeof(int) * length);
+	array = malloc(sizeof(int) * length);
 	if (!array)
 		return (0);
 	cursor = *head;
@@ -26,10 +31,10 @@ int is_palindrome(listint_t **head)
 	{
 		if (array[j] != array[length - j - 1])
 		{
-			free(list);
+			free(array);
 			return (0);
 		}
 	}
-	free(list);
+	free(array);
 	return (1);
 }
