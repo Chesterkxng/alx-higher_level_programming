@@ -1,4 +1,6 @@
 #include "lists.h"
+#include <stddef.h>
+#include <stdlib.h>
 /**
  * is_palindrome - a function that check
  * @head: listint_t
