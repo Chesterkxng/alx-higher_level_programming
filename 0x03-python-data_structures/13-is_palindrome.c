@@ -8,7 +8,8 @@
  */
 int is_palindrome(listint_t **head)
 {
-	size_t length = 0, i = 0, j;
+	size_t length = 0, j;
+	int i = 0;
 	listint_t *cursor = *head;
 	int *array;
 
