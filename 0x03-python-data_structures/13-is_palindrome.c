@@ -21,8 +21,8 @@ int is_palindrome(listint_t **head)
 	while (cursor)
 	{
 		array[i] = cursor->n;
-		cursor = cursor->next;
 		length++;
+		cursor = cursor->next;
 		i++;
 	}
 	for (j = 0; j < length / 2; j++)
