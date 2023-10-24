@@ -67,24 +67,24 @@ class Square:
 
     def __eq___(self, other):
         """ equal """
-        return self.size == other.size
+        return self.area() == other.area()
 
     def __lt__(self, other):
         """ Less  than """
-        return self.size < other.size
+        return self.area() < other.area()
 
     def __le__(self, other):
         """ less equal than """
-        return self.size <= other.size
+        return self.area() <= other.area()
 
     def __ne__(self, other):
         """ Non equal or different """
-        return self.size != other.size
+        return self.area() != other.area()
 
     def __ge__(self, other):
         """ great equal """
-        return self.size >= other.size
+        return self.area() >= other.area()
 
     def __gt__(self, other):
         """ greater than """
-        return self.size > other.size
+        return self.area() > other.area()
