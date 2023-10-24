@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ module that defines Square class
 the Square Class represent a Square by his size
 Classes:
