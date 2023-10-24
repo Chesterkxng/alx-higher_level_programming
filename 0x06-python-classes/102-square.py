@@ -59,7 +59,7 @@ class Square:
         """
         return (self.__size ** 2)
 
-    def __eq___(self, other):
+    def __eq__(self, other):
         """ equal """
         return self.area() == other.area()
 
