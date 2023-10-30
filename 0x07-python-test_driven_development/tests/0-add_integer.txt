@@ -1,0 +1,61 @@
+The "add_integer" test module
+==================================
+
+#test 0: #Import module:
+--------------
+>>> add_integer = __import__('0-add_integer').add_integer
+
+#test 1: case a = 1, b = 2
+-------------------------
+>>> add_integer(1, 2)
+3
+
+#test 2: case a = 100, b = -2
+----------------------------
+>>> add_integer(100, -2)
+98
+
+#test 3: case a = 2, b default
+------------------------------
+>>> add_integer(2)
+100
+
+#test 4: case a = 100.3, b = -2
+-------------------------------
+>>> add_integer(100.3, -2)
+98
+
+#test 5: case a = 4, b = "School"
+--------------------------------
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+#test 6: case a = None, b default
+---------------------------------
+>>> add_integer(None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+#test 7: case a not defined, b default
+---------------------------------------
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+#test 8: case NaN passed
+------------------------
+>>> add_integer(1, float('nan'))
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
+
+#test 9: case inf passed
+------------------------
+>>> add_integer(4, float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer

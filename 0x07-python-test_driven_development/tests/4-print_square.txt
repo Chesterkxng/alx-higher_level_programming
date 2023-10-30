@@ -1,0 +1,36 @@
+The print square test module
+=========================================
+
+test for "4-print_square.py"
+
+__________________________________________
+#test 0: importing the function
+-------------------------------
+>>> print_square = __import__('4-print_square').print_square
+
+#test 1: case size not integer
+-------------------------------
+>>> print_square("king")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+#test 2: size is a negative value
+---------------------------------
+>>> print_square(-5)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+#test 3: size is missing
+------------------------
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+#test 4: size is int and > 0
+----------------------------
+>>> print_square(2)
+##
+##

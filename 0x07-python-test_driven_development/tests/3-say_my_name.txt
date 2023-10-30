@@ -1,0 +1,36 @@
+The "say_my_name" test module
+=============================
+
+testing the 3-say_my_name.py
+
+===========================================================
+
+#test 0: importing the function
+-------------------------------
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+#test 1: 2 strings passed as args
+--------------------------------
+>>> say_my_name("Chester", "King")
+My name is Chester King
+
+#test 2: not a string given as 1rst arg
+----------------------------------------
+>>> say_my_name(12, "king")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+#test 3: not a string given as 2nd arg
+--------------------------------------
+>>> say_my_name("Chester", 667)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+#test 4: no args given
+---------------------------
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'

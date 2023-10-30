@@ -1,0 +1,49 @@
+The test module for text formatting
+===================================
+
+the "5-text_indentation.py" test code
+
+-------------------------------------
+#test 0: import the module
+---------------------------
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+#test 1: case string without spec flag
+--------------------------------------
+>>> text_indentation("Chester King")
+Chester King
+
+#test 2: case string with a spec flag
+-------------------------------------
+>>> text_indentation("Chester.King")
+Chester.
+<BLANKLINE>
+King
+
+#test 3: case string with a special flag and a space right after
+-----------------------------------------------------------------
+>>> text_indentation("Chester. King")
+Chester.
+<BLANKLINE>
+King
+
+#test 4: case string with a special flag and 4 spaces right after
+-----------------------------------------------------------------
+>>> text_indentation("Chester.    King")
+Chester.
+<BLANKLINE>
+King
+
+#test 5: case not string
+------------------------
+>>> text_indentation(12)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+#test 6: argument missing
+-------------------------
+>>> text_indentation()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'

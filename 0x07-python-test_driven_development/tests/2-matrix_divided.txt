@@ -1,0 +1,84 @@
+the "2-matrix_divided" module
+============================
+testing 2-matrix_divided .py
+
+#test 0: importing the module
+----------------------------
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+#test 1: element in the list is not integer or float
+-----------------------------------------------------
+>>> matrix_divided([[1, "king", 3], [3, 6, 9]], 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+#test 2: sub matrix of matrix have different sizes
+--------------------------------------------------
+>>> matrix_divided([[12, 9, 3], [3, 6]], 3)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+#test 3: case div = 0
+----------------------
+>>> matrix_divided([[15, 5, 10], [25, 30, 45]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+#test 4: normal case
+----------------------
+>>> matrix_divided([[15, 5, 10], [25, 30, 45]], 5)
+[[3.0, 1.0, 2.0], [5.0, 6.0, 9.0]]
+
+#test 5: one arg missing
+-----------------------------------
+>>> matrix_divided(3)
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+#test 6: two args missing
+-----------------------------------
+>>> matrix_divided()
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+#test 7: divide by inf
+------------------------
+>>> matrix_divided([[1, 2, 3]], float('inf'))
+[[0.0, 0.0, 0.0]]
+
+#test 8: divide by nan
+------------------------
+>>> matrix_divided([[1, 2, 3]], float('nan'))
+[[nan, nan, nan]]
+
+#test 9: divide inf by inf
+------------------------
+>>> matrix_divided([[1, float('inf'), 3]], float('inf'))
+[[0.0, nan, 0.0]]
+
+#test 9: divide nan by inf
+------------------------
+>>> matrix_divided([[1, float('nan'), 3]], float('inf'))
+[[0.0, nan, 0.0]]
+
+#test 10: divide by a string
+-----------------------------
+>>> matrix_divided([[1, 2, 3]], "king")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+#test 11: list with inf div by a number:
+----------------------------------------
+>>> matrix_divided([[1, float('inf'), 3]], 2)
+[[0.5, inf, 1.5]]
+
+#test 12: list with nan div by a number:
+----------------------------------------
+>>> matrix_divided([[1, float('nan'), 3]], 2)
+[[0.5, nan, 1.5]]
