@@ -22,4 +22,4 @@ def text_indentation(text):
             while text[i + 1] == " ":
                 i += 1
         i += 1
-    print(formated_text)
+    print(formated_text, end='')
