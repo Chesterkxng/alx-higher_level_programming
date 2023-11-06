@@ -85,3 +85,16 @@ TypeError: king must be an integer
 Traceback (most recent call last):
 ...
 TypeError: king must be an integer
+
+#test 13: typeError
+-------------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", [4])
+Traceback (most recent call last):
+...
+TypeError: king must be an integer
+
+#test 12: Normal case
+-------------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", 15)
