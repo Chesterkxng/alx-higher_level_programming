@@ -1,0 +1,79 @@
+this module is used to test geometry base
+=========================================
+testing "7-base_geometry.py"
+-----------------------------------------
+#test 0: importing the module
+-----------------------------
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+#test 1: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+#test 2: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+#test 3: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+#test 4: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", 0)
+Traceback (most recent call last):
+...
+ValueError: king must be greater than 0
+
+#test 5: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", -4)
+Traceback (most recent call last):
+...
+ValueError: king must be greater than 0
+
+#test 8: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", "4")
+Traceback (most recent call last):
+...
+TypeError: king must be an integer
+
+#test 9: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", (4, ))
+Traceback (most recent call last):
+...
+TypeError: king must be an integer
+
+#test 10: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", {4, 5})
+Traceback (most recent call last):
+...
+TypeError: king must be an integer
+
+#test 11: area
+-------------
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("king", None)
+Traceback (most recent call last):
+...
+TypeError: king must be an integer
