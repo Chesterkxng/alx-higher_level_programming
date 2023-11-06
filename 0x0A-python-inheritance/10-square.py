@@ -17,7 +17,7 @@ class Square(Rectangle):
 
     def area(self):
         """ compute the aera of the rectangle """
-        return (self.__size ** 2)
+        return (self.__size * self.__size)
 
     def __str__(self):
         """ format the output """
