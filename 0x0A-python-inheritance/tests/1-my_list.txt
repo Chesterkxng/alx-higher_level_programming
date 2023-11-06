@@ -1,0 +1,38 @@
+This module is use to test the list program
+===========================================
+testing "1-my_list.py"
+-------------------------------------------
+#test 0: import the module
+>>> MyList = __import__('1-my_list').MyList
+
+#test 1: empty list
+-------------------
+>>> my_list = MyList();
+>>> my_list.print_sorted()
+[]
+
+#test 2: already sorted
+-----------------------
+>>> my_list = MyList([1, 2 , 3, 4])
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
+
+#test 3: not sorted
+-----------------------
+>>> my_list = MyList([1, 5, 2, 3, 4])
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+#test 4: no sorted with negative value
+--------------------------------------
+>>> my_list = MyList([1, 2 , 3, 4, -4, -2])
+>>> my_list.print_sorted()
+[-4, -2, 1, 2, 3, 4]
+
+#test 5: inherit works ?
+-----------------------
+>>> my_list = MyList()
+>>> my_list.append(15)
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[1, 15]
