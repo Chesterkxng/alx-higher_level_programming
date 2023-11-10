@@ -4,6 +4,7 @@ this module defines Rectangle Class
 """
 
 from models.base import Base
+import sys
 
 
 class Rectangle(Base):
@@ -54,7 +55,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, x):
         """ set x """
-        self.__x =  self.validator("x", x)
+        self.__x = self.validator("x", x)
 
     @property
     def y(self):
@@ -65,3 +66,24 @@ class Rectangle(Base):
     def y(self, y):
         """ set y """
         self.__y = self.validator("y", y)
+
+    def area(self):
+        """ compute the area of the rectangle """
+        return (self.__width * self.__height)
+
+    def display(self):
+        """ print the rectangle with """
+        for i in range(self.__y):
+            print()
+        for j in range(self.__height):
+            print(self.__x * " " + self.__width * "#")
+
+    def __str__(self) -> str:
+        """ overwrites the default print """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id,
+            self._Rectangle__x,
+            self._Rectangle__y,
+            self._Rectangle__width,
+            self._Rectangle__height
+        )
