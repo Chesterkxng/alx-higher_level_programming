@@ -87,3 +87,24 @@ class Rectangle(Base):
             self._Rectangle__width,
             self._Rectangle__height
         )
+
+    def update(self, *args, **kwargs):
+        """ update the rectangle class """
+        attrs = ["id", "width", "height", "x", "y"]
+        if args:
+            for attr, value in zip(attrs, args):
+                setattr(self, attr, value)
+        else:
+            for attr, value in kwargs.items():
+                if attr in attrs:
+                    setattr(self, attr, value)
+
+    def to_dictionary(self):
+        """dictionaty repr"""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y,
+        }
