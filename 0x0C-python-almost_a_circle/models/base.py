@@ -40,3 +40,24 @@ class Base:
             return []
         else:
             return (json.loads(json_string))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ create an instnace with the dic """
+        if cls.__name__ == "Rectangle":
+            inst = cls(1, 1)
+        elif cls.__name__ == "Square":
+            inst = cls(1)
+        inst.update(**dictionary)
+        return (inst)
+
+    @classmethod
+    def load_from_file(cls):
+        """ load from a file """
+        try:
+            with open("{}.json".format(cls.__name__), 'r') as f:
+                dicts = cls.from_json_string(f.read())
+                lists = [cls.create(**dic) for dic in dicts]
+                return (lists)
+        except FileNotFoundError:
+            return []
