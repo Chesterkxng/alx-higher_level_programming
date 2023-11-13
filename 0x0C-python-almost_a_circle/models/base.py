@@ -3,6 +3,7 @@
 this module defines a Base class
 """
 import json
+import csv
 
 
 class Base:
