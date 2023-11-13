@@ -69,15 +69,15 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Serializer """
-        with open("{}.csv".format(cls.__name__), "w", newline="") as file:
+        with open("{}.csv".format(cls.__name__), "w", newline="") as f:
             if list_objs is None or list_objs == []:
-                file.write("[]")
+                f.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
                     fields = ["id", "width", "height", "x", "y"]
                 else:
                     fields = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(file, fieldnames=fields)
+                writer = csv.DictWriter(f, fieldnames=fields)
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
 
