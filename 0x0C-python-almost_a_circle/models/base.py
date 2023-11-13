@@ -69,17 +69,14 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Serializer """
-        with open("{}.csv".format(cls.__name__), "w", newline="") as f:
-            if list_objs is None or list_objs == []:
-                f.write("[]")
-            else:
+        with open("{}.csv".format(cls.__name__), "w", newline="") as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
                 if cls.__name__ == "Rectangle":
-                    fields = ["id", "width", "height", "x", "y"]
-                else:
-                    fields = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(f, fieldnames=fields)
-                for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+                    my_list = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                    writer.writerow(my_list)
+                elif cls.__name__ == "Square":
+                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
