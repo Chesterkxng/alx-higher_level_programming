@@ -62,21 +62,23 @@ class Base:
                 dicts = cls.from_json_string(f.read())
                 lists = [cls.create(**dic) for dic in dicts]
                 return (lists)
-        except FileNotFoundError:
+        except IOError:
             return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Serializer """
         with open("{}.csv".format(cls.__name__), "w", newline="") as file:
-            writer = csv.writer(file)
-            for obj in list_objs:
+            if list_objs is None or list_objs == []:
+                file.write("[]")
+            else:
                 if cls.__name__ == "Rectangle":
-                    writer.writerow(
-                        [obj.id, obj.width, obj.height, obj.x, obj.y]
-                    )
-                elif cls.__name__ == "Square":
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    fields = ["id", "width", "height", "x", "y"]
+                else:
+                    fields = ["id", "size", "x", "y"]
+                    writer = csv.DictWriter(csvfile, fieldnames=fields)
+                    for obj in list_objs:
+                        writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
