@@ -101,7 +101,7 @@ class Base:
                             x=int(row[2]),
                             y=int(row[3]),
                         )
-                        objects.append(object_)
-                        return objects
+                    objects.append(object_)
+                return objects
         except FileNotFoundError:
             return []
