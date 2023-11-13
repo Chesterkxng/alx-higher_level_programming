@@ -33,6 +33,8 @@ class Base:
                 obj_lists = [obj.to_dictionary() for obj in list_objs]
                 json_obj_lists = cls.to_json_string(obj_lists)
                 f.write(json_obj_lists)
+            else:
+                f.write("[]")
 
     @staticmethod
     def from_json_string(json_string):
