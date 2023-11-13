@@ -69,8 +69,8 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Serializer """
-        with open("{}.csv".format(cls.__name__), "w", newline="") as file:
-            writer = csv.writer(file)
+        with open("{}.csv".format(cls.__name__), "w", newline="") as f:
+            writer = csv.writer(f)
             for obj in list_objs:
                 if cls.__name__ == "Rectangle":
                     my_list = [obj.id, obj.width, obj.height, obj.x, obj.y]
