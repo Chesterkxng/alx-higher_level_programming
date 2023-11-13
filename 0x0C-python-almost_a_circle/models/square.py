@@ -30,8 +30,8 @@ class Square(Rectangle):
     @size.setter
     def size(self, value):
         """ set the size value """
-        self.width = super().validator("size", value)
-        self.height = super().validator("size", value)
+        self.width = super().validator("width", value)
+        self.height = super().validator("width", value)
 
     def update(self, *args, **kwargs):
         """ update the Square class """
