@@ -7,6 +7,9 @@ Unittest for the rectangle Class
 from models.rectangle import Rectangle
 from models.base import Base
 import unittest
+from unittest.mock import patch
+from io import StringIO
+
 
 class TestRectangle(unittest.TestCase):
     """ testing rectangle """
@@ -103,3 +106,38 @@ class TestRectangle(unittest.TestCase):
         with open("Rectangle.json", 'r') as f:
             self.assertEqual(
                 f.read(), '[{"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}]')
+
+    def test_display(self):
+        with patch('sys.stdout', new_callable=StringIO) as output:
+            rect = Rectangle(2, 3)
+            rect.display()
+            result = output.getvalue()
+            expected = ("##\n"
+                        "##\n"
+                        "##\n")
+            self.assertEqual(result, expected)
+
+    def test_display2(self):
+        with patch('sys.stdout', new_callable=StringIO) as output:
+            rect = Rectangle(2, 3, y=1)
+            rect.display()
+            result = output.getvalue()
+            expected = ("\n"
+                        "##\n"
+                        "##\n"
+                        "##\n")
+            self.assertEqual(result, expected)
+
+    def test_display3(self):
+        with patch('sys.stdout', new_callable=StringIO) as output:
+            rect = Rectangle(2, 3, x=1)
+            rect.display()
+            result = output.getvalue()
+            expected = (" ##\n"
+                        " ##\n"
+                        " ##\n")
+            self.assertEqual(result, expected)
+
+    def test_loadfromfile(self):
+        output = Rectangle.load_from_file()
+        self.assertEqual(output, [])
