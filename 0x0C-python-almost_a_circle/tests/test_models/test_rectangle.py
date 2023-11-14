@@ -32,6 +32,18 @@ class TestRectangle(unittest.TestCase):
             Rectangle("King", 10)
         self.assertEqual(str(error.exception), "width must be an integer")
 
+        with self.assertRaises(TypeError) as error:
+            Rectangle(10, "king")
+        self.assertEqual(str(error.exception), "height must be an integer")
+
+        with self.assertRaises(TypeError) as error:
+            Rectangle(1, 2, "10")
+        self.assertEqual(str(error.exception), "x must be an integer")
+
+        with self.assertRaises(TypeError) as error:
+            Rectangle(1, 2, 3, "4")
+        self.assertEqual(str(error.exception), "y must be an integer")
+
         with self.assertRaises(ValueError) as error:
             Rectangle(0, 5)
         self.assertEqual(str(error.exception), "width must be > 0")
@@ -77,3 +89,17 @@ class TestRectangle(unittest.TestCase):
         }
         r1 = Rectangle(2, 2, 0, 0, 1)
         self.assertEqual(dict_sample, r1.to_dictionary())
+
+    def test_savetofile(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", 'r') as f:
+            self.assertEqual(f.read(), "[]")
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", 'r') as f:
+            self.assertEqual(f.read(), "[]")
+
+        Rectangle.save_to_file([Rectangle(1, 2, 0, 0, 1)])
+        with open("Rectangle.json", 'r') as f:
+            self.assertEqual(
+                f.read(), '[{"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}]')

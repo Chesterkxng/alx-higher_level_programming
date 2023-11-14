@@ -87,3 +87,56 @@ class TestSquare(unittest.TestCase):
             }
         s1 = Square(2, 0, 0, 1)
         self.assertEqual(dict_sample, s1.to_dictionary())
+
+    def test_init_with_values(self):
+        """ width neg """
+        s1 = Square(1, 2)
+        self.assertEqual(s1.size, 1)
+        self.assertEqual(s1.x, 2)
+
+        s = Square(1, 2, 3)
+        self.assertEqual(s1.size, 1)
+        self.assertEqual(s1.x, 2)
+        self.assertEqual(s1.y, 0)
+
+        with self.assertRaises(TypeError) as error:
+            Square(1, "King")
+        self.assertEqual(str(error.exception), "x must be an integer")
+
+        with self.assertRaises(TypeError) as error:
+            Square(1, 2, "King")
+        self.assertEqual(str(error.exception), "y must be an integer")
+
+    def test_create(self):
+        s1 = Square.create(**{ 'id': 89 })
+        self.assertEqual(s1.id, 89)
+
+        s2 = Square.create(**{ 'id': 89, 'size': 1 })
+        self.assertEqual(s2.id, 89)
+        self.assertEqual(s2.size, 1)
+
+        s3 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2 })
+        self.assertEqual(s3.id, 89)
+        self.assertEqual(s3.size, 1)
+        self.assertEqual(s3.x, 2)
+
+        s4 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(s4.id, 89)
+        self.assertEqual(s4.size, 1)
+        self.assertEqual(s4.x, 2)
+        self.assertEqual(s4.y, 3)
+
+    def test_savetofile1(self):
+        s1 = Square.save_to_file(None)
+        with open("Square.json", 'r') as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_savetofile2(self):
+        s1 = Square.save_to_file([])
+        with open("Square.json", 'r') as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_savetofile3(self):
+        s1 = Square.save_to_file([Square(1, 0, 0, 1)])
+        with open("Square.json", 'r') as f:
+            self.assertEqual(f.read(), '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
