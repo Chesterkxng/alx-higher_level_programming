@@ -7,6 +7,8 @@ Unittest for the Square Class
 from models.square import Square
 from models.rectangle import Rectangle
 import unittest
+import os
+
 
 class TestSquare(unittest.TestCase):
     """ testing rectangle """
@@ -140,3 +142,25 @@ class TestSquare(unittest.TestCase):
         s1 = Square.save_to_file([Square(1, 0, 0, 1)])
         with open("Square.json", 'r') as f:
             self.assertEqual(f.read(), '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
+
+    def test_loadfile(self):
+        if (os.path.exists("Square.json") is True):
+              os.remove("Square.json")
+        l = Square.load_from_file()
+        self.assertEqual(l, [])
+        os.mknod("Square.json")
+        l = Square.load_from_file()
+        self.assertEqual(l, [])
+
+    def test_load_square(self):
+        """Test for loading a list of squares"""
+        s1 = Square(6)
+        s2 = Square(7)
+        s3 = Square(4)
+        l = [s1, s2, s3]
+        Square.save_to_file(l)
+        upload_l = Square.load_from_file()
+        for i in range(len(l)):
+            self.assertEqual(l[i].to_dictionary(),
+                             upload_l[i].to_dictionary())
+        os.remove("Square.json")

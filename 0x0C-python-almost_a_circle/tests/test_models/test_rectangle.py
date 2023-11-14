@@ -9,6 +9,7 @@ from models.base import Base
 import unittest
 from unittest.mock import patch
 from io import StringIO
+import os
 
 
 class TestRectangle(unittest.TestCase):
@@ -137,3 +138,24 @@ class TestRectangle(unittest.TestCase):
                         " ##\n"
                         " ##\n")
             self.assertEqual(result, expected)
+
+    def test_loadfile(self):
+        if (os.path.exists("Rectangle.json") is True):
+              os.remove("Rectangle.json")
+        l = Rectangle.load_from_file()
+        self.assertEqual(l, [])
+        os.mknod("Rectangle.json")
+        l = Rectangle.load_from_file()
+        self.assertEqual(l, [])
+
+    def test_load_square(self):
+        r1 = Rectangle(6, 5)
+        r2 = Rectangle(7, 5)
+        r3 = Rectangle(4, 4)
+        l = [r1, r2, r3]
+        Rectangle.save_to_file(l)
+        upload_l = Rectangle.load_from_file()
+        for i in range(len(l)):
+            self.assertEqual(l[i].to_dictionary(),
+                             upload_l[i].to_dictionary())
+        os.remove("Square.json")
