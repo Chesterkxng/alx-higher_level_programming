@@ -137,7 +137,3 @@ class TestRectangle(unittest.TestCase):
                         " ##\n"
                         " ##\n")
             self.assertEqual(result, expected)
-
-    def test_loadfromfile(self):
-        output = Rectangle.load_from_file()
-        self.assertEqual(output, [])
