@@ -7,7 +7,7 @@ class Square extends sqrt {
     } else {
       for (let j = 0; j < this.height; j++) {
         for (let i = 0; i < this.width; i++) {
-	  process.stdout.write(c);
+          process.stdout.write(c);
         }
         process.stdout.write('\n');
       }
