@@ -1,12 +1,22 @@
 #!/usr/bin/python3
 """
-SQL ALCHEMY FIRST TASK
+The class definition of a State
+and an instance Base = declarative_base():
 """
-import sys
-from model_state import Base, State
 
-from sqlalchemy import (create_engine)
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+Base = declarative_base()
 
-if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(sys.argv[1], sys.argv[2], argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
+
+class State(Base):
+    """
+    State Class Mapped to states Table
+    """
+    __tablename__ = 'states'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(128), nullable=True)
+
+    def __init__(self, name):
+        self.name = name
