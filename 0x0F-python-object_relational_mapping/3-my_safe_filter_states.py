@@ -13,7 +13,7 @@ if __name__ == "__main__":
                          passwd=pwd, db=dtb, charset="utf8")
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",\
-                (input,))
+                (input))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
