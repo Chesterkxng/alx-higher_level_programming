@@ -11,10 +11,9 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=usr,
                          passwd=pwd, db=dtb, charset="utf8")
     cur = db.cursor()
-    stmt = "SELECT cities.id, cities.name, states.name \
-           FROM cities INNER JOIN states on \
-           states.id = cities.stade_id \
-           ORDER BY cities.id ASC"
+    stmt = "SELECT cities.id, cities.name, (SELECT states.name FROM states" +\
+           " WHERE states.id = cities.state_id) AS state_name FROM cities " +\
+           "ORDER BY cities.id ASC"
     cur.execute(stmt)
     query_rows = cur.fetchall()
     for row in query_rows:
