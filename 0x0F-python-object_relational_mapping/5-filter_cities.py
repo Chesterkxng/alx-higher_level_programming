@@ -16,6 +16,7 @@ if __name__ == "__main__":
            "(SELECT id FROM states WHERE name = %s) ORDER BY id ASC"
     cur.execute(stmt, (input,))
     query_rows = cur.fetchall()
+    n = len(query_rows)
     for i in range(n):
         print(rows[i][0], end="")
         if (i < n - 1):
