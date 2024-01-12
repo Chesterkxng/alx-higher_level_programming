@@ -13,8 +13,8 @@ if __name__ == "__main__":
                          passwd=pwd, db=dtb, charset="utf8")
     cur = db.cursor()
     stmt = "SELECT * FROM states WHERE" + \
-           "name LIKE BINARY '{}'".format(input) + \
-           "ORDER BY id ASC"
+           " name LIKE BINARY '{}'".format(input) + \
+           " ORDER BY id ASC"
     cur.execute(stmt)
     query_rows = cur.fetchall()
     for row in query_rows:
