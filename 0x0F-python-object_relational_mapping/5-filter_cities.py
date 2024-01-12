@@ -18,7 +18,7 @@ if __name__ == "__main__":
     query_rows = cur.fetchall()
     n = len(query_rows)
     for i in range(n):
-        print(rows[i][0], end="")
+        print(query_rows[i][0], end="")
         if (i < n - 1):
             print(", ", end="")
     print("")
