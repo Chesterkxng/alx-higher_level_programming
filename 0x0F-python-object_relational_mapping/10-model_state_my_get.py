@@ -17,6 +17,8 @@ if __name__ == "__main__":
     Session = sessionmaker()
     Session.configure(bind=engine)
     ss = Session()
-    states = ss.query(State).filter_by(name=input).first()
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    state = ss.query(State).filter_by(name=input).first()
+    if state:
+        print("{}".format(state.id))
+    else:
+        print("Not found")
