@@ -1,4 +1,4 @@
-0#!/usr/bin/python3
+#!/usr/bin/python3
 """
 listing all States objects from the database
 """
