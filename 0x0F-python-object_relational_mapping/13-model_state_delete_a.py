@@ -18,5 +18,5 @@ if __name__ == "__main__":
     states = ss.query(State).filter(State.name.like('%a%'))
     for state in states:
         ss.delete(state)
-    session.commit()
-    session.close()
+    ss.commit()
+    ss.close()
