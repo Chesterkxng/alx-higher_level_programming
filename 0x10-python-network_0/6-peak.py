@@ -2,6 +2,8 @@
 """
 function that find a maximun in a list
 """
+
+
 def find_peak(list_of_integers):
     """ max of a list """
     if not list_of_integers or len(list_of_integers) == 0:
