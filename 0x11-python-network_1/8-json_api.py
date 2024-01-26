@@ -12,11 +12,11 @@ if __name__ == "__main__":
         letter = ""
         data = {"q": letter}
         r = requests.post(url, data=data)
-        try:
-            r_json = r.json()
-            if r_json:
-                print("[{}] {}".format(r_json.get("id"), r_json.get("name")))
-            else:
-                print("No result")
-        except ValueError:
-            print("Not a valid JSON")
+    try:
+        r_json = r.json()
+        if r_json:
+            print("[{}] {}".format(r_json.get("id"), r_json.get("name")))
+        else:
+            print("No result")
+    except ValueError:
+        print("Not a valid JSON")
