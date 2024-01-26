@@ -10,8 +10,8 @@ if __name__ == "__main__":
         letter = sys.argv[1]
     else:
         letter = ""
-        data = {"q": letter}
-        r = requests.post(url, data=data)
+    data = {"q": letter}
+    r = requests.post(url, data=data)
     try:
         r_json = r.json()
         if r_json:
