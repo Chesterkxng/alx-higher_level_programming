@@ -7,8 +7,7 @@ request(`https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`,
     } else if (response.statusCode === 200) {
       const responseJson = JSON.parse(body);
       console.log(responseJson.title);
-    }
-    else {
+    } else {
       console.log('Error code: ' + response.statusCode);
     }
   });
