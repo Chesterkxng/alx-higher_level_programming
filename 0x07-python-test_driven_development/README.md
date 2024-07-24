@@ -13,8 +13,7 @@ following eight independently-developed:
   * [4-print_square.txt](./tests/4-print_square.txt)
   * [5-text_indentation.txt](./tests/text_indentation.txt)
   * [6-max_integer_test.py](./tests/6-max_integer_test.py)
-  * [100-matrix_mul.txt](./tests/100-matrix_mul.txt)
-  * [101-lazy_matrix_mul.txt](./tests/101-lazy_matrix_mul.txt)
+
 
 ## Function Prototypes :floppy_disk:
 
@@ -27,6 +26,7 @@ Prototypes for functions written in this project:
 | `3-say_my_name.py`       | `def say_my_name(first_name, last_name=""):` |
 | `4-print_square.py`      | `def print_square(size):`                    |
 | `5-text_indentation.py`  | `def text_indentation(text):`                |
+| `6-max_integer.py`       | `def max_integer(list=[]):`                  |
 
 
 ## Tasks :page_with_curl:
